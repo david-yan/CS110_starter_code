@@ -89,3 +89,7 @@ To test Jimmy's code:
 ```
 python3 ok
 ```
+
+## Submission
+To submit, please navigate to [okpy](https://okpy.org/usf/cs110/sp20/lab02/), and click `Create a new submission`. Please
+upload your entire `lab02` folder for your submission.
