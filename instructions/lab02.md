@@ -1,8 +1,14 @@
 # Lab 2: Python at its Basics
 
 ## Starter Files
-Download [lab01.zip](https://github.com/david-yan/CS110_starter_code/blob/master/lab01.zip?raw=true). Inside the archive,
-you will find starter files for the questions in this lab.
+Download [lab02.zip](https://github.com/david-yan/CS110_starter_code/blob/master/lab02.zip?raw=true). 
+
+Inside the archive, you will find the following files:
+- lab01.py : An empty file where code for Q1-Q5 should go.
+- example_tests.py : A file that contains the circumference and area functions, with example tests.
+- jimmy_hw.py : A file that contains Jimmy's homework. Relevant to Q6.
+- ok : Autograder for Jimmy.
+- lab01.ok : Autograder for Jimmy.
 
 ## Testing Your Code
 For the purposes of making sure that you know how to define your own functions, you will be responsible for testing your
