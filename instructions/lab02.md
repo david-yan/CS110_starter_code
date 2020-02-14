@@ -4,11 +4,11 @@
 Download [lab02.zip](https://github.com/david-yan/CS110_starter_code/blob/master/lab02.zip?raw=true). 
 
 Inside the archive, you will find the following files:
-- lab01.py : An empty file where code for Q1-Q5 should go.
+- lab02.py : An empty file where code for Q1-Q5 should go.
 - example_tests.py : A file that contains the circumference and area functions, with example tests.
 - jimmy_hw.py : A file that contains Jimmy's homework. Relevant to Q6.
 - ok : Autograder for Jimmy.
-- lab01.ok : Autograder for Jimmy.
+- lab02.ok : Autograder for Jimmy.
 
 ## Testing Your Code
 For the purposes of making sure that you know how to define your own functions, you will be responsible for testing your
@@ -36,7 +36,7 @@ Define a function such that given a dog's age as an integer, calculate and retur
 for a dog is equivalent to 7 years for a human.
 
 Example test:
-In `lab01.py`:
+In `lab02.py`:
 ```
 def dog_years(years):
   ...
@@ -44,7 +44,7 @@ print(dog_years(7)) # Test the function here
 ```
 Testing:
 ```
-lab01$ python3 lab01.py
+lab02 $ python3 lab02.py
 49
 ```
 
