@@ -29,7 +29,7 @@ a submission after the deadline to get comments, but do not want to use slip day
 ## Questions
 
 ### Writing Your Own Functions
-All code for these questions should be added to the `lab01.py` file.
+All code for these questions should be added to the `lab02.py` file.
 
 ### Q1: Dog years
 Define a function such that given a dog's age as an integer, calculate and return the dog's age in human years. Each year
