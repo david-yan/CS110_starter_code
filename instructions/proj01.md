@@ -370,6 +370,14 @@ adding your lines. You will see at the top of the function where the `store_item
 continuously ask the user for input, so long as the user has not chosen the `checkout` option. Feel free to take a look at the
 `main` function in `seller.py` for reference.
 
+There are also no autograder tests for this question.
+
+Now that you are done, you can test everything with
+```
+python3 amazon.py
+```
+Run your code, and play around with you new pseudo-Amazon program!
+
 ## Submitting
 To submit, please go to [okpy](https://okpy.org/usf/cs110/sp20/proj01/) (you will need to log in with your usfca.edu email),
 and click `Create a new submission`. The instructions will direct you on how you should submit the assignment. You can create
