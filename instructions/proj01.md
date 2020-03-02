@@ -345,6 +345,11 @@ def checkout(cart):
       "***YOUR CODE HERE***"
 ```
 
+To test your code with the autograder tests, run the following:
+```
+python3 ok -q checkout
+```
+
 ### Q11: Putting it all together: Process Choice
 Now let's put it all together, starting with `process_choice`. `process_choice` functions very similarly to `process_command`
 in `seller.py`, and it should use all of the functions you completed above in Part 2. Given a `choice`, it should run the
