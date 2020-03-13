@@ -1,10 +1,10 @@
 # Project 1 Rubric
 
-### Q1: Add Item
+### Q1: Add Item (10 pts)
 - +5: Creates item correctly
 - +5: Adds item to `store_items` correctly
 
-### Q2: List Items
+### Q2: List Items (10 pts)
 Now that we can add items to our store, let's display them. Implement the `list_items` function to display your store items
 in the specified format.
 
@@ -24,18 +24,13 @@ def list_items(store_items):
     "***YOUR CODE HERE***"
 ```
 
-After you finish implementing this, you should be able to add and see your items with the first two commands in the menu.
-Manually test this with
-```
-python3 seller.py
-```
+- +3: Loops through each item
+- +7: Prints in correct format
+    - +3: 'n)'
+    - +2: item name, item price
+    - +2: Combines strings correctly
 
-To run the autograder tests for this question, run the following:
-```
-python3 ok -q list_items
-```
-
-### Q3: Check Item Index
+### Q3: Check Item Index (10 pts)
 To enable the `modify_item` and `delete_item` functions, we need to first be able to check if the given index is valid
 given our list of `store_items`. Implement `check_item_index` to return `True` if the index provided is valid, and `False`
 otherwise.
@@ -60,12 +55,10 @@ def check_item_index(item_index, store_items):
     "***YOUR CODE HERE***"
 ```
 
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q check_item_index
-```
+- +5: Checks lower bound correctly
+- +5: Checks upper bound correctly
 
-### Q4: Modify Item
+### Q4: Modify Item (5 pts)
 Now let's implement `modify_item`. Given an `item_index`, set the item with that index to have the new `name` and `price`
 attributes provided.
 ```
@@ -81,17 +74,9 @@ def modify_item(item_index, name, price, store_items):
     "***YOUR CODE HERE***"
 ```
 
-After implementing this, you can test this manually by choosing option 2 when you run
-```
-python3 seller.py
-```
+- +5: Changes item correctly
 
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q modify_item
-```
-
-### Q5: Delete Item
+### Q5: Delete Item (5 pts)
 Lastly for the seller file, let's implement the `delete_item` function. Given an `item_index` we want to remove the item
 with that index from the `store_items`. 
 
@@ -108,24 +93,14 @@ def delete_item(item_index, store_items):
     "***YOUR CODE HERE***"
 ```
 
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q delete_item
-```
-
-Once you have implemented this, you should have complete functionality in your `seller.py` file!
-See for yourself by running
-```
-python3 seller.py
-```
-And playing with the options.
+- +5: Deletes correct item from `store_items`
 
 ## Part 2: Amazon
 All questions in part 2 are in the `amazon.py` file. While the `seller.py` file was for the seller, the `amazon.py` file is
 for buyers. You will notice that the `amazon.py` file looks pretty similar to the `seller.py` file, but is missing a lot of things. This is because it is missing the code to glue all of the functions together. This is something you will have to
 implement yourself. Luckily, you have already completed the `seller.py` file, and can use that as reference.
 
-### Q6: Display Choices
+### Q6: Display Choices (15 pts)
 Let's begin by writing the function that will print out the options for the buyer. This is similar to the `print_seller_menu`
 function in `seller.py`, but is different in that it changes based on the items in the store. The function declaration and
 description of the function are as follows:
@@ -152,14 +127,15 @@ def display_choices(store_items):
       """
       "***YOUR CODE HERE***"
 ```
-You will notice that this version of Amazon doesn't allow you to remove items from your cart :speak_no_evil:.
 
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q display_choices
-```
+- +3: Loops through items correctly
+- +7: Prints items in correct format
+    - +3: 'n)'
+    - +2: item name, item price
+    - +2: Combines strings correctly
+- +5: Prints options after items correctly
 
-### Q7: Check choice
+### Q7: Check choice (10 pts)
 Similar to how we had to implement `check_item_index` in `seller.py`, let's check that the choice provided is valid, given
 the `store_items`. Note, this is different than `check_item_index` in that there are valid choices that are not item indices.
 ```
@@ -186,12 +162,10 @@ def check_choice(choice, store_items):
       "***YOUR CODE HERE***"
 ```
 
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q check_choice
-```
+- +5: Checks lower bound correctly
+- +5: Checks upper bound correctly
 
-### Q8: Add Item to Cart
+### Q8: Add Item to Cart (10 pts)
 Before we put things together, let's first implement each function first. Implement `add_item_to_cart` which will add the item
 in `store_items` with an index of `item_index` to `cart.
 ```
@@ -213,12 +187,11 @@ def add_item_to_cart(item_index, store_items, cart):
       """
       "***YOUR CODE HERE***"
 ```
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q add_item_to_cart
-```
 
-### Q9: Display Cart
+- +5: Access correct item
+- +5: Adds an item to cart correctly
+
+### Q9: Display Cart (15 pts)
 Implement `display_cart` that prints information about our cart as described in the comments:
 ```
 def display_cart(cart):
@@ -238,12 +211,14 @@ def display_cart(cart):
       "***YOUR CODE HERE***"
 ```
 
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q display_cart
-```
+- +3: Loops through items correctly
+- +7: Prints items in correct format
+    - +3: 'n)'
+    - +2: item name, item price
+    - +2: Combines strings correctly
+- +5: Calculates and prints total price correctly
 
-### Q10: Checkout
+### Q10: Checkout (10 pts)
 Implement `checkout`, which will display the cart, and then a Goodbye message.
 ```
 def checkout(cart):
@@ -267,12 +242,10 @@ def checkout(cart):
       "***YOUR CODE HERE***"
 ```
 
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q checkout
-```
+- +5: Prints items correctly
+- +5: Prints additional messages correctly
 
-### Q11: Putting it all together: Process Choice
+### Q11: Putting it all together: Process Choice (20 pts)
 Now let's put it all together, starting with `process_choice`. `process_choice` functions very similarly to `process_command`
 in `seller.py`, and it should use all of the functions you completed above in Part 2. Given a `choice`, it should run the
 appopriate function. Make sure you read through `process_command`, as it will be great reference for how to complete this
@@ -285,32 +258,24 @@ def process_choice(choice, store_items, cart):
          - True if the user chose the Checkout option.
          - False otherwise.
 
-         See the process_command function in seller.py as an example f  or this function.
+         See the process_command function in seller.py as an example for this function.
      """
      "***YOUR CODE HERE***"
 ```
-There are no autograder tests for this question.
 
-### Q12: Putting it all together: Main
+- +5: Runs `add_item_to_cart` if choice is choice is item index
+- +5: Runs `display_cart` for appropriate choice
+- +5: Runs `checkout` for appropriate choice
+- +5: Returns correct value
+
+### Q12: Putting it all together: Main (20 pts)
 Lastly, let's complete the `main` function to tie it all together. Be sure to read the comments to see where you should be
 adding your lines. You will see at the top of the function where the `store_items`, and the `cart` variables are created. Do not modify any of these lines. All of your lines should come after it. The responsibility of the `main` function is to
 continuously ask the user for input, so long as the user has not chosen the `checkout` option. Feel free to take a look at the
 `main` function in `seller.py` for reference.
 
-There are also no autograder tests for this question.
-
-Now that you are done, you can test everything with
-```
-python3 amazon.py
-```
-Run your code, and play around with you new pseudo-Amazon program!
-
-## Submitting
-To submit, please go to [okpy](https://okpy.org/usf/cs110/sp20/proj01/) (you will need to log in with your usfca.edu email),
-and click `Create a new submission`. The instructions will direct you on how you should submit the assignment. You can create
-multiple submissions, and for grading, you most recent submission will be used.
-
-### Be sure to submit your entire proj01 directory.
-
-The submissions will always be open up to 4 days after the assigned due date to account for slip days. If you want to create
-a submission after the deadline to get comments, but do not want to use slip days, please indicate clearly in your submission.
+- +5: Uses while loop
+    - +3: Correct condition
+- +5: Runs `display_choices`
+- +5: Prompts users for `input`
+- +5: Runs `process_choice` with user input
