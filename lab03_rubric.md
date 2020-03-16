@@ -1,11 +1,11 @@
-# Lab 3 Rubric
+# Lab 3 Rubric (30 pts total. Worth 15 pts, divide total score by 2.)
 
 ## Required Questions
 
 ### What Would Python Display?
 
-### Q1: Control (5 pts)
-- Check the `tests/control.py` file to see that the answers to the questions are revealed, and the `'locked'` field is
+### Q1: Control
+- +6: Check the `tests/control.py` file to see that the answers to the questions are revealed, and the `'locked'` field is
 `False`
 
 ### Coding Practice
