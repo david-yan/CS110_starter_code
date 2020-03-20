@@ -18,7 +18,7 @@ a submission after the deadline to get comments, but do not want to use slip day
 ### Q1: Debugging Quiz
 Using Ok, take the debugging quiz with the following command:
 ```
-python3 ok -q debugging
+python3 ok -q debugging -u
 ```
 
 ### Q2: Error Handler
