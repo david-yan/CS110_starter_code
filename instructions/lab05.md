@@ -91,3 +91,38 @@ Using Ok, test your code with:
 ```
 python3 ok -q write_word_count
 ```
+
+### Q4: Tri Asterisk
+```
+def tri_asterisk(depth, out):
+    """Writes a triangle of asterisks that is `depth` long, and `depth` wide to
+    the file with filename, `out`. See the test cases for examples.
+
+    **HINT**: Try using a nested for loop, or a for loop in a for loop.
+    **HINT**: Don't forget writing a new line character ('\n') at the end of each line.
+
+    >>> tri_asterisk(2, 'two_deep')
+    >>> with open('two_deep') as f:
+    ...     print(f.read().strip())
+    **
+    *
+    >>> tri_asterisk(10, 'ten_deep')
+    >>> with open('ten_deep') as f:
+    ...     print(f.read().strip())
+    **********
+    *********
+    ********
+    *******
+    ******
+    *****
+    ****
+    ***
+    **
+    *
+    """
+    "*** YOUR CODE HERE ***"
+```
+Using Ok, test your code with:
+```
+python3 ok -q tri_asterisk
+```
