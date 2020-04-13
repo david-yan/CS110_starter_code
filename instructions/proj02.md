@@ -1,394 +1,155 @@
 # Project 2: Blackjack
 
 ## Background
-In this project, you will be implementing an Amazon-like program! It will be split into two parts, one part for the seller,
-and the second part for the buyer. By the end of this project, you will have a seller program that allows you to add,
-modify, and delete items, and a buyer program that allows you to purchase items from the marketplace.
+In this project, you will be finishing the implementation of Blackjack using the OOP design we came up with in class. This will be a simplified version of the game, and not include all of the rules played in casinos. Be sure to read to rules so you know which are included, and which are not. Additionally, the `Card` and `Decks` classes have been provided with an implementation. You can feel free to use your own `Card` and `Decks` classes from homework, so long as the function the same way. 
+
+## Summary of game rules
+To review, these are the rules of blackjack that we will be implementing:
+- At the beginning of the game, all players are given a number of chips.
+- At the beginning of each round, each player places a wager and bets a certain amount of their chips.
+- Each player in the game is playing against the "dealer". 
+  - If the player beats the dealer, that player wins the amount of chips that they wagered.
+  - If the player loses to the dealer, that player loses the amount of chips that they wagered.
+- After all players have placed a wager, all players (including the dealer) is dealt two cards.
+- For each player (dealer goes last), they take their turn. The goal of the player during their turn is to get their card
+total to be as close to, but not over 21. To do this, each player is given two options for their turn:
+  - Hit: The player receives a new card. The player can continuously choose to "hit" as many times as they want until their
+  card total goes above 21, in which case they go "bust".
+  - Stand: The player ends their turn with their current card total.
+- After all players have gone, the players who have a higher card total than the dealer and have not gone "bust" beat the
+dealer. All other players lose to the dealer.
+
+The value of cards are as follows:
+- Suits don't translate into any value.
+- Ace has either a value of 1 or 11. From the way we will implement this program, an ace will always be added with a value of 11, and can be reduced to 1 to prevent the player from going bust.
+- All face cards (J, Q, K) have a value of 10.
 
 ## Starter Files
-Download [proj01.zip](https://github.com/david-yan/CS110_starter_code/blob/master/proj01.zip?raw=true). Inside the archive,
+Download [proj02.zip](https://github.com/david-yan/CS110_starter_code/blob/master/proj02.zip?raw=true). Inside the archive,
 you will find the following files:
-- `seller.py` - The code for the first part of this project.
-- `amazon.py` - The code for the second part of this project.
-- `common.py` - Helper file used for this project. Please do not modify this file.
-- `ok` - Autograder program.
-- `proj01.ok` - Configuration for the autograder. Please do not modify this file.
+- `player.py` - The file that contains the Player class. Part 1 of the project.
+- `game.py` - The file that contains the Game class. Part 2 of the project.
+- `card.py` - The file that contains the Card and Decks classes, implementations provided.
+- `blackjack.py` - The file that will run the program. *DO NOT MODIFY THIS FILE.*
+- `ok` - Autograder program. *DO NOT MODIFY THIS FILE.*
+- `proj02.ok` - Configuration for the autograder. *DO NOT MODIFY THIS FILE.*
+- `tests/` - A directory that contains all of the tests. *DO NOT MODIFY THIS FILE.*
 
 ## Running Tests
 To test that your code is working correctly, run `python3 ok`. This will automatically run the test suite against your code.
 Please make sure to check your output to ensure that all of the tests passed. If you have any problems running the tester,
 please make a post on Piazza.
 
-## Using OK
-For ease of testing for both you and the grader, we will now be using a program called Ok for testing homeworks, labs, and
-projects. A few important things to note about using Ok are the following:
-
-To run all of the tests using Ok, run the following:
-```
-python3 ok
-```
-
-To run a test for a specified function, run the following command:
-```
-python3 ok -q <specified function>
-```
-
-By default, only tests that did not pass will show up. You can use the `-v` option to show all the tests, including tests
-you have passed.
-```
-python3 ok -v
-```
-
 #### The following questions are meant to be completed in order.
 
-## Part 1: Seller
+## Part 1: Player
 
-### Q0: Exploring `seller.py`
-Before we begin, let's explore the `seller.py` file. Look inside the file to find all of the functions that you will be
-implementing listed at the top. Be sure not to modify the functions below the line indicated.
+This file should be completed from the top downwards. To make sure that these instructions are not too verbose, the code has not been copied here. Instead, only clarifying details will be put here. Please make sure to check these instructions before completing the functions.
 
-Try running the program with:
-```
-python3 seller.py
-```
-You will see a bunch of options displayed, and you can play and interact with the menus now, but none of the functionality
-is there. You will be implementing those in the following questions!
+### Q1: Player constructor
 
-### Q1: Add Item
-The first thing we are going to implement is the `add_item` function. Given a `name`, and a `price`, add the item to the
-list, `store_items`. An item is represented as a list where the first element is the name, and the second element is the
-price. Therefore, your `store_items` will have lists within a list. See the tests for examples.
-
-Here is the full description, as seen in the file.
-```
-def add_item(name, price, store_items):
-    """ Adds new item to the store_items list with the given name and price.
-        Each item should be stored as a list in the form: [name, price].
-        See tests below for examples:
-
-        >>> store_items = []
-        >>> add_item('iPhone Galaxy XL', 799.99, store_items)
-        >>> print(store_items)
-        [['iPhone Galaxy XL', 799.99]]
-        >>> add_item('Microsoft Macbook 10', 1299.99, store_items)
-        >>> print(store_items)
-        [['iPhone Galaxy XL', 799.99], ['Microsoft Macbook 10', 1299.99]]
-    """
-    "***YOUR CODE HERE***"
-```
-
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q add_item
-```
-
-### Q2: List Items
-Now that we can add items to our store, let's display them. Implement the `list_items` function to display your store items
-in the specified format.
+Complete the constructor by following the documentation and the tests.
 
 ```
-def list_items(store_items):
-    """ Displays store items in a numbered list in the following format:
-        0) <item name>: $<item price>
-        1) <item name>: $<item price>
-        ...
-        See test below for an example.
-
-        >>> store_items = [['iPhone Galaxy XL', 799.99], ['Microsoft Macbook 10', 1299.99]]
-        >>> list_items(store_items)
-        0) iPhone Galaxy XL: $799.99
-        1) Microsoft Macbook 10: $1299.99
-    """
-    "***YOUR CODE HERE***"
+python3 ok -q player
 ```
 
-After you finish implementing this, you should be able to add and see your items with the first two commands in the menu.
-Manually test this with
-```
-python3 seller.py
-```
+### Q2: Place wager
 
-To run the autograder tests for this question, run the following:
-```
-python3 ok -q list_items
-```
-
-### Q3: Check Item Index
-To enable the `modify_item` and `delete_item` functions, we need to first be able to check if the given index is valid
-given our list of `store_items`. Implement `check_item_index` to return `True` if the index provided is valid, and `False`
-otherwise.
+Request that the player place a wager. *Be sure to read the note about using `input_func`.*
 
 ```
-def check_item_index(item_index, store_items):
-    """ Checks that the item index is valid.
-        Returns:
-        - True if index is in bounds of the list, no negative indices!
-        - False otherwise
-
-        >>> store_items = [['iPhone Galaxy XL', 799.99], ['Microsoft Macbook 10', 1299.99]]
-        >>> check_item_index(0, store_items)
-        True
-        >>> check_item_index(1, store_items)
-        True
-        >>> check_item_index(2, store_items)
-        False
-        >>> check_item_index(-1, store_items)
-        False
-    """
-    "***YOUR CODE HERE***"
+python3 ok -q place_wager
 ```
 
-To test your code with the autograder tests, run the following:
+### Q3: Win chips
+
+The player wins its wager.
+
 ```
-python3 ok -q check_item_index
+python3 ok -q win_chips
 ```
 
-### Q4: Modify Item
-Now let's implement `modify_item`. Given an `item_index`, set the item with that index to have the new `name` and `price`
-attributes provided.
-```
-def modify_item(item_index, name, price, store_items):
-    """ Sets the item in store_items with item_index to have a new name, and price, as
-        specified in the arguments.
+### Q4: Lose chips
 
-        >>> store_items = [['iPhone Galaxy XL', 799.99], ['Microsoft Macbook 10', 1299.99]]
-        >>> modify_item(0, 'Google S9', 849.99, store_items)
-        >>> print(store_items)
-        [['Google S9', 849.99], ['Microsoft Macbook 10', 1299.99]]
-    """
-    "***YOUR CODE HERE***"
+The player loses its wager.
+
+```
+python3 ok -q lose_chips
 ```
 
-After implementing this, you can test this manually by choosing option 2 when you run
+### Q5: Receive card
+
+The player receives a card. When the player receives an ace, it will start with value 11. If the player's total goes above 21, an ace should be reduced in value to 1, if there are any. Use the attributes `self.num_aces` and `self.reduced_aces` to keep track of how many aces there are, and how many aces have been reduced in value respectively.
+
 ```
-python3 seller.py
+python3 ok -q receive_card
 ```
 
-To test your code with the autograder tests, run the following:
+### Q6: Do turn
+
+Does the player's turn.
+
 ```
-python3 ok -q modify_item
+python3 ok -q do_turn
 ```
 
-### Q5: Delete Item
-Lastly for the seller file, let's implement the `delete_item` function. Given an `item_index` we want to remove the item
-with that index from the `store_items`. 
+### Q7: Do dealer turn
 
-** Hint: The `del` function should be very useful here. **
+Does the dealer's turn. A dealer will continue to hit until his card total is below 18.
+
 ```
-def delete_item(item_index, store_items):
-    """ Deletes the item in store_items with the specified index.
-
-        >>> store_items = [['iPhone Galaxy XL', 799.99], ['Microsoft Macbook 10', 1299.99]]
-        >>> delete_item(1, store_items)
-        >>> print(store_items)
-        [['iPhone Galaxy XL', 799.99]]
-    """
-    "***YOUR CODE HERE***"
+python3 ok -q do_dealer_turn
 ```
 
-To test your code with the autograder tests, run the following:
+## Part 2: Game
+
+This file should also be completed from the top downwards.
+
+### Q8: Game constructor
+
+Complete the game constructor.
+
 ```
-python3 ok -q delete_item
+python3 ok -q game
 ```
 
-Once you have implemented this, you should have complete functionality in your `seller.py` file!
-See for yourself by running
-```
-python3 seller.py
-```
-And playing with the options.
+### Q9: Deal cards
 
-## Part 2: Amazon
-All questions in part 2 are in the `amazon.py` file. While the `seller.py` file was for the seller, the `amazon.py` file is
-for buyers. You will notice that the `amazon.py` file looks pretty similar to the `seller.py` file, but is missing a lot of things. This is because it is missing the code to glue all of the functions together. This is something you will have to
-implement yourself. Luckily, you have already completed the `seller.py` file, and can use that as reference.
+Deals 2 cards to each player, and to the dealer. Each player should be dealt 2 cards before the dealer to make sure the output matches the tests. `player.receive_card()` must be complete for the tests for this question to pass.
 
-### Q6: Display Choices
-Let's begin by writing the function that will print out the options for the buyer. This is similar to the `print_seller_menu`
-function in `seller.py`, but is different in that it changes based on the items in the store. The function declaration and
-description of the function are as follows:
 ```
-def display_choices(store_items):
-      """ Displays the buyer menu in the following format:
-          Add item to cart:
-          0) <item name>: $<item price>
-          1) <item name>: $<item price>
-          ...
-          Or:
-          N-1) Display cart.
-          N) Checkout.
-          See test below for example.
-
-          >>> store_items = [['iPhone Galaxy XL', 799.99], ['Microsoft   Macbook 10', 1299.99]]
-          >>> display_choices(store_items)
-          Add item to cart:
-          0) iPhone Galaxy XL: $799.99
-          1) Microsoft Macboook 10: $1299.99
-          Or:
-          2) Display cart.
-          3) Checkout.
-      """
-      "***YOUR CODE HERE***"
-```
-You will notice that this version of Amazon doesn't allow you to remove items from your cart :speak_no_evil:.
-
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q display_choices
+python3 ok -q deal_cards
 ```
 
-### Q7: Check choice
-Similar to how we had to implement `check_item_index` in `seller.py`, let's check that the choice provided is valid, given
-the `store_items`. Note, this is different than `check_item_index` in that there are valid choices that are not item indices.
-```
-def check_choice(choice, store_items):
-      """ Checks that the choice given is valid.
-          Returns:
-          - True if the choice is valid. (Remember display cart and che  ckout options!)
-          - False otherwise.
+### Q10: Finish round
 
-          >>> store_items = [['iPhone Galaxy XL', 799.99], ['Microsoft   Macbook 10', 1299.99]]
-          >>> check_choice(0, store_items)
-          True
-          >>> check_choice(1, store_items)
-          True
-          >>> check_choice(2, store_items)
-          True
-          >>> check_choice(3, store_items)
-          True
-          >>> check_choice(4, store_items)
-          False
-          >>> check_choice(-1, store_items)
-          False
-      """
-      "***YOUR CODE HERE***"
+Finish a round and dole out winnings and losses. To be clear, a dealer that goes bust has a card total of 0. However, a player who has gone bust does not beat a dealer who has gone bust. A tie goes in favor of the dealer.
+
+```
+python3 ok -q finish_round
 ```
 
-To test your code with the autograder tests, run the following:
+### Q11: Check chip totals
+
+Check to see if any players have gone broke.
+
 ```
-python3 ok -q check_choice
+python3 ok -q check_chip_counts
 ```
 
-### Q8: Add Item to Cart
-Before we put things together, let's first implement each function first. Implement `add_item_to_cart` which will add the item
-in `store_items` with an index of `item_index` to `cart.
-```
-def add_item_to_cart(item_index, store_items, cart):
-      """ Adds the item in store_items with index of item_index to the   cart.
-          See test below for an example.
+### Q12: Play game
 
-          >>> store_items = [['iPhone Galaxy XL', 799.99], ['Microsoft   Macbook 10', 1299.99]]
-          >>> cart = []
-          >>> add_item_to_cart(1, store_items, cart)
-          >>> print(cart)
-          [['Microsoft Macbook 10', 1299.99]]
-          >>> add_item_to_cart(0, store_items, cart)
-          >>> print(cart)
-          [['Microsoft Macbook 10', 1299.99], ['iPhone Galaxy XL', 799.  99]]
-          >>> add_item_to_cart(1, store_items, cart)
-          >>> print(cart)
-          [['Microsoft Macbook 10', 1299.99], ['iPhone Galaxy XL', 799.  99], ['Microsoft Macbook 10', 1299.99]]
-      """
-      "***YOUR CODE HERE***"
-```
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q add_item_to_cart
-```
+Tie everything together.
 
-### Q9: Display Cart
-Implement `display_cart` that prints information about our cart as described in the comments:
+No autograder tests for this part. Once this is complete, run the following to play blackjack:
 ```
-def display_cart(cart):
-      """ Displays the cart in the following format:
-          <item name>: $<item price>
-          <item name>: $<item price>
-          ...
-          Total price: $<total price>
-
-          >>> cart = [['item 1', 1099.99], ['item 2', 799.99], ['item 3  ', 1299.99]]
-          >>> display_cart(cart)
-          item1: $1099.99
-          item2: $799.99
-          item3: $1299.99
-          Total price: $3,199.97
-      """
-      "***YOUR CODE HERE***"
+python3 blackjack.py
 ```
-
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q display_cart
-```
-
-### Q10: Checkout
-Implement `checkout`, which will display the cart, and then a Goodbye message.
-```
-def checkout(cart):
-      """ Displays the cart, then prints a Goodbye message in the follo  wing format:
-          Here are the items you purchased:
-          <item name>: $<item price>
-          <item name>: $<item price>
-          ...
-          Total price: $<total price>
-          Thank you! Have a great day! No returns!
-
-          >>> cart = [['item 1', 1099.99], ['item 2', 799.99], ['item 3  ', 1299.99]]
-          >>> checkout(cart)
-          Here are the items you just purchased:
-          item1: $1099.99
-          item2: $799.99
-          item3: $1299.99
-          Total price: $3,199.97
-          Thank you! Have a great day! No returns!
-      """
-      "***YOUR CODE HERE***"
-```
-
-To test your code with the autograder tests, run the following:
-```
-python3 ok -q checkout
-```
-
-### Q11: Putting it all together: Process Choice
-Now let's put it all together, starting with `process_choice`. `process_choice` functions very similarly to `process_command`
-in `seller.py`, and it should use all of the functions you completed above in Part 2. Given a `choice`, it should run the
-appopriate function. Make sure you read through `process_command`, as it will be great reference for how to complete this
-function.
-```
-def process_choice(choice, store_items, cart):
-     """ Processes the choice, displaying the appropriate information   and running the
-         appropriate function based on the choice provided.
-         Return:
-         - True if the user chose the Checkout option.
-         - False otherwise.
-
-         See the process_command function in seller.py as an example f  or this function.
-     """
-     "***YOUR CODE HERE***"
-```
-There are no autograder tests for this question.
-
-### Q12: Putting it all together: Main
-Lastly, let's complete the `main` function to tie it all together. Be sure to read the comments to see where you should be
-adding your lines. You will see at the top of the function where the `store_items`, and the `cart` variables are created. Do not modify any of these lines. All of your lines should come after it. The responsibility of the `main` function is to
-continuously ask the user for input, so long as the user has not chosen the `checkout` option. Feel free to take a look at the
-`main` function in `seller.py` for reference.
-
-There are also no autograder tests for this question.
-
-Now that you are done, you can test everything with
-```
-python3 amazon.py
-```
-Run your code, and play around with you new pseudo-Amazon program!
 
 ## Submitting
-To submit, please go to [okpy](https://okpy.org/usf/cs110/sp20/proj01/) (you will need to log in with your usfca.edu email),
+To submit, please go to [okpy](https://okpy.org/usf/cs110/sp20/proj02/) (you will need to log in with your usfca.edu email),
 and click `Create a new submission`. The instructions will direct you on how you should submit the assignment. You can create
 multiple submissions, and for grading, you most recent submission will be used.
 
-### Be sure to submit your entire proj01 directory.
-
-The submissions will always be open up to 4 days after the assigned due date to account for slip days. If you want to create
-a submission after the deadline to get comments, but do not want to use slip days, please indicate clearly in your submission.
+### Be sure to submit your entire proj02 directory.
