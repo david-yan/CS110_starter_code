@@ -22,6 +22,7 @@ dealer. All other players lose to the dealer.
 The value of cards are as follows:
 - Suits don't translate into any value.
 - Ace has either a value of 1 or 11. From the way we will implement this program, an ace will always be added with a value of 11, and can be reduced to 1 to prevent the player from going bust.
+- Cards 2-10 translate exactly to their card value.
 - All face cards (J, Q, K) have a value of 10.
 
 ## Starter Files
